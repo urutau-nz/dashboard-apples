@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <link rel="icon" href="https://urbanintelligence.co.nz/wp-content/uploads/2021/11/Urban-Intelligence-Solo-Mark-Light-Blue-Circle-32px.png" sizes="32x32">
+    <link rel="icon" href="https://urbanintelligence.co.nz/wp-content/uploads/2021/11/Urban-Intelligence-Solo-Mark-Light-Blue-Circle-192px.png" sizes="192x192">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css" />
+
+    <title>Apple Growth - Urban Intelligence</title> 
+
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+    <table style="height:100%;width:100%;border-spacing: 0px;max-height:100%;">
+        <tr>
+            <td id="menu-td"> <!-- Menu -->
+                <table id="menu-table">
+                    <tr>
+                        <td id="switch-td"> <!-- Switch -->
+                            <div id="switch-growth-div">
+                                Growth
+                            </div>
+                            <div id="switch-prediction-div">
+                                JoNZ
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="options-td"> <!-- Option Menu-->
+                            <table id="options-table">
+                                <tr>
+                                    <td style="text-align: center;">
+                                        <h1 id="menu-header">Apple Growth</h1>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p id="menu-description">
+                                            The following data shows the average and percentile for the growth of apples in the regions, compared to previous years.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="form-td">
+                                        <table class="form-table">
+                                            <tr>
+                                                <td>
+                                                    <b>Select the variety:</b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div style="width: 100%;box-sizing:border-box;padding: 0.5rem;border: 1px solid #50add4; border-radius: 0.2rem;">
+                                                        <b>Royal Gala</b>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="form-td">
+                                        <table class="form-table">
+                                            <tr>
+                                                <td style="padding-bottom: 0.2rem;">
+                                                    <b>Select the regions:</b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" id="region-all" name="region-all" checked>
+                                                    <label for="region-all">All</label>
+                                                    <input type="checkbox" id="region-hastings" name="region-hastings">
+                                                    <label for="region-hastings">Hastings</label>
+                                                    <input type="checkbox" id="region-chb" name="region-chb">
+                                                    <label for="region-chb">Central Hawkes Bay</label>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="form-td">
+                                        <table class="form-table">
+                                            <tr>
+                                                <td>
+                                                    <b>Select the orchard/s:</b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div style="width: 100%;box-sizing:border-box;padding: 0.5rem;border: 1px solid #50add4; border-radius: 0.2rem;">
+                                                        <b>Royal Gala</b>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: lighter;font-size: 14px;">
+                                                    <i>Defaults to "All" when multiple regions are selected</i>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="form-td">
+                                        <table class="form-table">
+                                            <tr>
+                                                <td style="padding-bottom: 0.1rem;">
+                                                    <b>Select the year/s:</b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="year">
+                                                    <input type="checkbox" id="year-2015" name="year-2015" checked>
+                                                    <label for="year-2015">2015</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="year">
+                                                    <input type="checkbox" id="year-2016" name="year-2016">
+                                                    <label for="year-2016">2016</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="year">
+                                                    <input type="checkbox" id="year-2017" name="year-2017">
+                                                    <label for="year-2017">2017</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="year">
+                                                    <input type="checkbox" id="year-2018" name="year-2018">
+                                                    <label for="year-2018">2018</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="year">
+                                                    <input type="checkbox" id="year-2019" name="year-2019">
+                                                    <label for="year-2019">2019</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="year">
+                                                    <input type="checkbox" id="year-2020" name="year-2020">
+                                                    <label for="year-2020">2020</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="year">
+                                                    <input type="checkbox" id="year-2021" name="year-2021">
+                                                    <label for="year-2021">2021</label>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+            <td id="page-td"> <!-- Page -->
+
+            </td>
+        </tr>
+        <tr> <!-- Footer -->
+          <td colspan="2" id="footer">
+            <div style="height:2rem;width:100%;overflow:none;">
+              <a href="https://urbanintelligence.co.nz/" target="_blank"><img src="https://urbanintelligence.co.nz/wp-content/uploads/2021/11/Solo-Mark-Small-White-32px.png"></img></a>
+              <div class="attribution">© 2021 Urban Intelligence.</div>
+              <div style="position: absolute; top: 0; right: 0; float:right;">
+                <a href="https://www.canterbury.ac.nz/engineering/schools/cnre/research/systems/" target="_blank"><img style="width: 9rem" src="https://www.canterbury.ac.nz/style-guide/logos/logo-tabs/svg/UC_White_LAN_White.svg"></img></a>
+              </div>
+            </div>
+          </td>
+        </tr>
+    </table>
+
+
+
+
+      <div id="help-popup">
+        <button onclick="hideHelpPopup()">&#10006;</button>
+        <h2>The 15 Minute City</h2>
+        <p>As cities rapidly urbanise and adapt to climate change, there is an increasing need to shift the design of built environments to be human-centric and easy to traverse. The 5, 10, and 15-minute city is all about living locally. Giving people the ability to meet most of their everyday needs within a 15-minute walk, scooter, cycle, or public transport trip of their home. This concept was first implemented in Paris to reduce transport emissions and increase vibrancy, wellbeing, and safety within communities.<br>
+          <br>This tool enables local government, central government, and communities to:<br><ul>
+          <li>Guide investment prioritisation in creating highly accessible cities through place making and smart amenity locations<br>
+          <li>Guide the densification and urban renaissance of towns and cities in Aotearoa <br>
+          <li>Identify neighbourhoods that are underserved by a range of amenities  <br>
+          <li>Identify the inequities of city design by income, ethnicity, and disability <br>
+          <li>Adapt to and mitigate climate change through promoting active modes of transit, such as walking, cycling and using a wheelchair <br>
+          </ul><span style="font-style: italic; font-size: 16px;">See our full post <a href="https://urbanintelligence.co.nz/project/x-minute-city" target="_blank">here</a></span><br>
+          <span class="contact">Is there a destination missing? Add it to this shared Google Sheet and we'll update the site: <a
+              href="https://docs.google.com/spreadsheets/d/1-FHfr8l7f9USI-YqPIua9zzrT1G4r6NP0OdLIyQQpI0/edit?usp=sharing">Google Sheet</a></span><br>
+          <span class="contact">Have other suggestions or feedback? Contact us at <a href="mailto:info@urbanintelligence.co.nz?subject=About Your 15-Minute City Project">info@urbanintelligence.co.nz</a></span>
+          <!--</ul><br><span style="font-style: italic; font-size: 80%;">M. J. Anderson, D. A. F. Kiddle, & T. M. Logan (2021). The Underestimated Role of the Transportation Network: Improving Disaster & Community Resilience. Transportation Research Part D : Transport and Environment. (Under Review)</span></p>
+          <br><br>
+          <span class="contact">Have suggestions or feedback? Contact us at <a href="mailto:info@urbanintelligence.co.nz?subject=About Your WREMO Project...">info@urbanintelligence.co.nz</a></span>
+          -->
+      </div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
