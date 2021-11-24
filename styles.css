@@ -193,6 +193,23 @@ svg .rect {
     border-radius:1rem;
 }
 
+.vl-select-head {
+    color: #50add4;
+    border-color: #50add4 !important;
+    border-radius: 4px !important;
+    font-weight: bold;
+}
+.vl-select-body-parent {
+    border-radius: 4px !important;
+    color: #50add4;
+    border-color: #50add4 !important;
+    font-size: 0.9rem !important;
+}
+.vl-select-body td:hover {
+    background-color: #50add4 !important;
+}
+
+
 
 
 
