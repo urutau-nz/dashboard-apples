@@ -7,164 +7,172 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.0.1/d3.min.js" integrity="sha512-1e0JvdNhUkvFbAURPPlFKcX0mWu/b6GT9e0uve7BW4MFxJ15q4ZCd/Llz+B7/oh+qhw7/l6Q1ObPt6aAuR01+Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css" />
 
+    <script src="https://projects.urbanintelligence.co.nz/x-minute-city/js/graph.js"></script>
 
     <script src="https://d3js.org/d3.v4.js"></script>
 
     <title>Apple Growth - Urban Intelligence</title> 
 
     <link rel="stylesheet" href="styles.css"/>
+    <link rel="stylesheet" href="https://projects.urbanintelligence.co.nz/uivl/form-items.css"/>
 </head>
 <body>
 
     <table style="height:100%;width:100%;border-spacing: 0px;max-height:100%;">
         <tr>
             <td id="menu-td"> <!-- Menu -->
-                <table id="menu-table">
-                    <tr>
-                        <td id="switch-td"> <!-- Switch -->
-                            <div id="switch-growth-div" class="active" onclick="setPage('growth')">
-                                Growth
-                            </div>
-                            <div id="switch-prediction-div" onclick="setPage('prediction')">
-                                JoNZ
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="options-td"> <!-- Option Menu-->
-                            <table id="options-table">
-                                <tr>
-                                    <td style="text-align: center;">
-                                        <h1 id="menu-header">Apple Growth</h1>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p id="menu-description">
-                                            The following data shows the average and percentile for the growth of apples in the regions, compared to previous years.
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="form-td">
-                                        <table class="form-table">
-                                            <tr>
-                                                <td>
-                                                    <b>Select the variety:</b>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div style="width: 100%;box-sizing:border-box;padding: 0.5rem;border: 1px solid #50add4; border-radius: 0.2rem;">
-                                                        <b>Royal Gala</b>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr id="region-tr">
-                                    <td class="form-td">
-                                        <table class="form-table">
-                                            <tr>
-                                                <td style="padding-bottom: 0.2rem;">
-                                                    <b>Select the regions:</b>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <input type="checkbox" id="region-all" name="region-all" checked>
-                                                    <label for="region-all">All</label>
-                                                    <input type="checkbox" id="region-hastings" name="region-hastings">
-                                                    <label for="region-hastings">Hastings</label>
-                                                    <input type="checkbox" id="region-chb" name="region-chb">
-                                                    <label for="region-chb">Central Hawkes Bay</label>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr id="orchard-tr">
-                                    <td class="form-td">
-                                        <table class="form-table">
-                                            <tr>
-                                                <td>
-                                                    <b>Select the orchard/s:</b>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div style="width: 100%;box-sizing:border-box;padding: 0.5rem;border: 1px solid #50add4; border-radius: 0.2rem;">
-                                                        <b>Royal Gala</b>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="font-weight: lighter;font-size: 14px;">
-                                                    <i>Defaults to "All" when multiple regions are selected</i>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr id="year-tr">
-                                    <td class="form-td">
-                                        <table class="form-table">
-                                            <tr>
-                                                <td style="padding-bottom: 0.1rem;">
-                                                    <b>Select the year/s:</b>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="year">
-                                                    <input type="checkbox" id="year-2015" name="year-2015" checked>
-                                                    <label for="year-2015">2015</label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="year">
-                                                    <input type="checkbox" id="year-2016" name="year-2016">
-                                                    <label for="year-2016">2016</label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="year">
-                                                    <input type="checkbox" id="year-2017" name="year-2017">
-                                                    <label for="year-2017">2017</label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="year">
-                                                    <input type="checkbox" id="year-2018" name="year-2018">
-                                                    <label for="year-2018">2018</label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="year">
-                                                    <input type="checkbox" id="year-2019" name="year-2019">
-                                                    <label for="year-2019">2019</label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="year">
-                                                    <input type="checkbox" id="year-2020" name="year-2020">
-                                                    <label for="year-2020">2020</label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="year">
-                                                    <input type="checkbox" id="year-2021" name="year-2021">
-                                                    <label for="year-2021">2021</label>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
+                <div style="width:25rem;height:100%;">
+                    <table id="menu-table">
+                        <tr>
+                            <td id="switch-td"> <!-- Switch -->
+                                <div id="switch-growth-div" class="active" onclick="setPage('growth')">
+                                    Growth
+                                </div>
+                                <div id="switch-prediction-div" onclick="setPage('prediction')">
+                                    JoNZ
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="options-td"> <!-- Option Menu-->
+                                <table id="options-table">
+                                    <tr>
+                                        <td style="text-align: center;">
+                                            <h1 id="menu-header">Apple Growth</h1>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p id="menu-description">
+                                                The following data shows the average and percentile for the growth of apples in the regions, compared to previous years.
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-td">
+                                            <table class="form-table">
+                                                <tr>
+                                                    <td>
+                                                        <b>Select the variety:</b>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div id="variety-dropdown">
+                                                        
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr id="region-tr">
+                                        <td class="form-td">
+                                            <table class="form-table">
+                                                <tr>
+                                                    <td style="padding-bottom: 0.2rem;">
+                                                        <b>Select the regions:</b>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox" id="region-all" name="region-all" checked>
+                                                        <label for="region-all">All</label>
+                                                        <input type="checkbox" id="region-hastings" name="region-hastings">
+                                                        <label for="region-hastings">Hastings</label>
+                                                        <input type="checkbox" id="region-chb" name="region-chb">
+                                                        <label for="region-chb">Central Hawkes Bay</label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr id="orchard-tr">
+                                        <td class="form-td">
+                                            <table class="form-table">
+                                                <tr>
+                                                    <td>
+                                                        <b>Select the orchard/s:</b>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <!--
+                                                        <div style="width: 100%;box-sizing:border-box;padding: 0.5rem;border: 1px solid #50add4; border-radius: 0.2rem;">
+                                                            <b>Royal Gala</b>
+                                                        </div>-->
 
+                                                        <div id="orchard-dropdown">
+                                                        
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="font-weight: lighter;font-size: 14px;">
+                                                        <i>Defaults to "All" when multiple regions are selected</i>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr id="year-tr">
+                                        <td class="form-td">
+                                            <table class="form-table">
+                                                <tr>
+                                                    <td style="padding-bottom: 0.1rem;">
+                                                        <b>Select the year/s:</b>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="year">
+                                                        <input type="checkbox" id="year-2015" name="year-2015" checked>
+                                                        <label for="year-2015">2015</label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="year">
+                                                        <input type="checkbox" id="year-2016" name="year-2016">
+                                                        <label for="year-2016">2016</label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="year">
+                                                        <input type="checkbox" id="year-2017" name="year-2017">
+                                                        <label for="year-2017">2017</label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="year">
+                                                        <input type="checkbox" id="year-2018" name="year-2018">
+                                                        <label for="year-2018">2018</label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="year">
+                                                        <input type="checkbox" id="year-2019" name="year-2019">
+                                                        <label for="year-2019">2019</label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="year">
+                                                        <input type="checkbox" id="year-2020" name="year-2020">
+                                                        <label for="year-2020">2020</label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="year">
+                                                        <input type="checkbox" id="year-2021" name="year-2021">
+                                                        <label for="year-2021">2021</label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </td>
             <td id="page-td"> <!-- Page -->
                 <div id="page-div">
@@ -175,6 +183,36 @@
                             <td class="graph-td" colspan="2">
                                 <div id="growth-graph">
 
+                                </div>
+                                <div class="graph-hover" id="growth-hover">
+                                    <div class="graph-hover-div">
+                                        <table class="graph-hover-table" id="growth-hover-table">
+                                            <tr>
+                                                <td>
+                                                    <div class="graph-hover-dot"></div>
+                                                </td>
+                                                <td>
+                                                    <b>All, 2019:</b> 59mm in Week 9
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div style="width:1rem;height:1rem;border-radius:1rem;background-color: #d450ad"></div>
+                                                </td>
+                                                <td>
+                                                    <b>All, 2016:</b> 52mm in Week 9
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div style="width:1rem;height:1rem;border-radius:1rem;background-color: #50add4"></div>
+                                                </td>
+                                                <td>
+                                                    <b>All, 2017:</b> 49mm in Week 9
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -498,7 +536,8 @@
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+<script src="https://projects.urbanintelligence.co.nz/uivl/data-loading-tools.js"></script>
+<script src="https://projects.urbanintelligence.co.nz/uivl/form-items.js"></script>
 
 <script>
     var DEBUGGING = true;

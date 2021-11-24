@@ -98,6 +98,7 @@ input[type="checkbox" i]:checked:after {
     background-color: white;
     border-radius: 2rem;
     height: 30rem;
+    position: relative;
 }
 .info-td {
     background-color: #50add4;
@@ -139,13 +140,58 @@ svg .rect {
     stroke-width: 5px;
 }
 
-.grid > .tick:first-child {
-    display: none;
+.grid .tick {
+    opacity: 0.2;
 }
-.grid > .tick:last-child {
-    display: none;
+.x-grid .tick:nth-child(even) {
+    opacity: 0.1;
+}
+.y-grid .tick:nth-child(even) {
+    opacity: 0.1;
 }
 
+.tick text  {
+    opacity: 0.6;
+}
+
+.graph-axis-label  {
+    opacity: 0.6;
+}
+
+.graph-title {
+    opacity: 0.8;
+}
+
+
+.graph-hover {
+    padding: 0.2rem;
+    position: absolute;
+    color: #0008;
+    font-size: 14px;
+    display: none;
+    transition: top 0.1s linear,
+                left 0.1s linear,
+                right 0.1s linear;
+    pointer-events: none;
+    opacity: 0.9;
+}
+.graph-hover-table {
+    border-spacing: 0.2rem;
+}
+.graph-hover-table td:last-child {
+    padding: 0 0.3rem;
+}
+.graph-hover-div {
+    background-color: white;
+    border-radius: 0.6rem;
+    box-shadow: 0 0 6px #0005;
+    transform: translateY(-50%) translateY(-4px);
+}
+.graph-hover-dot {
+    width:1rem;
+    height:1rem;
+    border-radius:1rem;
+}
 
 
 
@@ -297,4 +343,9 @@ svg .rect {
 #growth-graph {
     height: 100%;
     width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
 }
+
