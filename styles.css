@@ -173,7 +173,7 @@ svg .rect {
                 left 0.1s linear,
                 right 0.1s linear;
     pointer-events: none;
-    opacity: 0.9;
+    opacity: 0.98;
 }
 .graph-hover-table {
     border-spacing: 0.2rem;
