@@ -77,6 +77,7 @@ input[type="checkbox" i]:checked:after {
 .form-td {
     width: 100%;
     padding-top: 2rem !important;
+    position: relative;
 }
 
 .form-table {
@@ -209,6 +210,10 @@ svg .rect {
     background-color: #50add4 !important;
 }
 
+.description {
+    padding-top: 0.2rem !important;
+    font-size: 12px;
+}
 
 
 
@@ -357,7 +362,7 @@ svg .rect {
 }
 
 
-#growth-graph {
+.graph {
     height: 100%;
     width: 100%;
     position: absolute;
@@ -366,3 +371,91 @@ svg .rect {
     overflow: hidden;
 }
 
+
+
+.compare-button {
+    position: absolute;
+    top: 2rem;
+    right: 1rem;
+    border-radius: 1rem;
+    padding: 0.2rem;
+    border: 1px solid;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+    opacity: 0.4;
+}
+.compare-button:hover {
+    background-color: #50add4;
+    color: white;
+}
+.compare-button.active {
+    opacity: 1;
+    background-color: #50add4;
+    color: white;
+}
+
+#growth-graph-backdrop {
+    position: absolute;
+    top: calc(50% - 0.5em);
+    left: 0%;
+    width: 100%;
+    text-align: center;
+    color: #50add440;
+    font-size: 5rem;
+    font-weight: bold;
+    display: none;
+}
+
+
+#percentile-switch {
+    position: absolute;
+    top: -3rem;
+    left: -2rem;
+    padding: 0.2rem;
+    height: 1.6rem;
+    background-color: white;
+    border-radius: 2rem;
+    width: 9.2rem;
+    cursor: pointer;
+}
+#percentile-switch .switch {
+    width: 1.6rem;
+    height: 1.6rem;
+    background-color: #50add4;
+    border-radius: 2rem;
+    display: inline-block;
+    opacity: 0.6;
+}
+#percentile-switch .label {
+    position: absolute;
+    top: 0.45rem;
+    left: 2.2rem;
+    width: max-content;
+    opacity: 0.6;
+}
+#percentile-switch:hover .switch {
+    opacity: 1;
+}
+#percentile-switch:hover .label {
+    opacity: 1;
+}
+#percentile-switch.active {
+    width: 9.6rem;
+    background-color: #50add4;
+}
+#percentile-switch.active .switch {
+    opacity: 1;
+    background-color: white;
+}
+#percentile-switch.active .label {
+    opacity: 1;
+    font-weight: bold;
+    color: white;
+}
+#percentile-switch.active:hover .switch {
+    opacity: 0.8;
+}
+#percentile-switch.active:hover .label {
+    opacity: 0.8;
+}

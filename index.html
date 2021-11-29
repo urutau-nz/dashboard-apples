@@ -71,7 +71,7 @@
                                             <table class="form-table">
                                                 <tr>
                                                     <td style="padding-bottom: 0.2rem;">
-                                                        <b>Select the regions:</b>
+                                                        <b>Select a region:</b>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -84,7 +84,15 @@
                                                         <label for="region-chb">Central Hawkes Bay</label>
                                                     </td>
                                                 </tr>
+                                                <tr>
+                                                    <td class="description" style="font-weight: lighter;font-size: 14px;font-style:italic;">
+                                                        
+                                                    </td>
+                                                </tr>
                                             </table>
+                                            <div class="compare-button" onclick="regionFormType('multi')">
+                                                Compare
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr id="orchard-tr">
@@ -92,7 +100,7 @@
                                             <table class="form-table">
                                                 <tr>
                                                     <td>
-                                                        <b>Select the orchard/s:</b>
+                                                        <b>Select an orchard:</b>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -108,11 +116,14 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="font-weight: lighter;font-size: 14px;">
-                                                        <i>Defaults to "All" when multiple regions are selected</i>
+                                                    <td class="description" style="font-weight: lighter;font-size: 14px;font-style:italic;">
+                                                        
                                                     </td>
                                                 </tr>
                                             </table>
+                                            <div class="compare-button" onclick="orchardFormType('multi')">
+                                                Compare
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr id="year-tr">
@@ -120,13 +131,7 @@
                                             <table class="form-table">
                                                 <tr>
                                                     <td style="padding-bottom: 0.1rem;">
-                                                        <b>Select the year/s:</b>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="year">
-                                                        <input type="checkbox" id="year-2015" value="15" name="year" checked>
-                                                        <label for="year-2015">2015</label>
+                                                        <b>Select a year:</b>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -161,11 +166,19 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="year">
-                                                        <input type="checkbox" id="year-2021" value="21" name="year">
+                                                        <input type="checkbox" id="year-2021" value="21" name="year" checked>
                                                         <label for="year-2021">2021</label>
                                                     </td>
                                                 </tr>
+                                                <tr>
+                                                    <td class="description" style="font-weight: lighter;font-size: 14px;font-style:italic;">
+
+                                                    </td>
+                                                </tr>
                                             </table>
+                                            <div class="compare-button" onclick="yearFormType('multi')">
+                                                Compare
+                                            </div>
                                         </td>
                                     </tr>
                                 </table>
@@ -181,38 +194,21 @@
                         <!-- Growth Rows -->
                         <tr style="height: 100%;" id="growth-graph-tr">
                             <td class="graph-td" colspan="2">
-                                <div id="growth-graph">
+                                <div class="graph" id="growth-graph">
 
+                                </div>
+                                <div id="growth-graph-backdrop">
+                                    No Data
                                 </div>
                                 <div class="graph-hover" id="growth-hover">
                                     <div class="graph-hover-div">
                                         <table class="graph-hover-table" id="growth-hover-table">
-                                            <tr>
-                                                <td>
-                                                    <div class="graph-hover-dot"></div>
-                                                </td>
-                                                <td>
-                                                    <b>All, 2019:</b> 59mm in Week 9
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div style="width:1rem;height:1rem;border-radius:1rem;background-color: #d450ad"></div>
-                                                </td>
-                                                <td>
-                                                    <b>All, 2016:</b> 52mm in Week 9
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div style="width:1rem;height:1rem;border-radius:1rem;background-color: #50add4"></div>
-                                                </td>
-                                                <td>
-                                                    <b>All, 2017:</b> 49mm in Week 9
-                                                </td>
-                                            </tr>
                                         </table>
                                     </div>
+                                </div>
+                                <div id="percentile-switch" onclick="togglePercentiles()">
+                                    <div class="switch"></div>
+                                    <div class="label">50th Percentiles</div>
                                 </div>
                             </td>
                         </tr>
@@ -224,7 +220,7 @@
                                             <h2>Past Counts for Royal Gala</h2>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr class="counts-tr">
                                         <td>
                                             <table style="width: 100%;">
                                                 <tr>
@@ -347,7 +343,15 @@
                                     <table style="width: 100%;border-spacing: 0.5rem 2rem;">
                                         <tr>
                                             <td  class="graph-td">
+                                                <div class="graph" id="prediction-graph">
 
+                                                </div>
+                                                <div class="graph-hover" id="prediction-hover">
+                                                    <div class="graph-hover-div">
+                                                        <table class="graph-hover-table" id="prediction-hover-table">
+                                                        </table>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                         <tr>
