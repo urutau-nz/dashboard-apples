@@ -309,7 +309,8 @@ svg .rect {
 #switch-growth-div {
     left: 0;
 }
-#switch-prediction-div {
+div#switch-prediction-div { /* Remove these when predictions are online */
+    cursor: default;
     right: 0;
 }
 
@@ -458,4 +459,41 @@ svg .rect {
 }
 #percentile-switch.active:hover .label {
     opacity: 0.8;
+}
+
+
+div#prediction-warning {
+    position: absolute;
+    top: 150%;
+    right: -10%;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background-color: #c4deeb;
+    color: white;
+    height: auto;
+    opacity: 0;
+    z-index: 5;
+    width: 70%;
+    font-size: 1.2rem;
+    transition: opacity 0.2s ease-in-out;
+    cursor: default;
+    box-shadow: 0 0 0.2rem #0002;
+    pointer-events: none;
+}
+div#prediction-warning .x {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border-radius: 1rem;
+    height: 1.2rem;
+    width: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+    opacity: 1;
+    font-weight: 100;
+    font-size: 1rem;
+    color: #50add4;
+}
+div#prediction-warning .x:hover {
+    color: #24789c;
 }

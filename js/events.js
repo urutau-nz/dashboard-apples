@@ -438,3 +438,17 @@ function togglePercentiles() {
     }
     genGrowthGraph();
 }
+
+
+
+
+// While Predictions aren't available
+function showPredictionWarning() {
+    $("#prediction-warning").css("pointer-events", "initial");
+    $("#prediction-warning").css("opacity", "1");
+}
+// While Predictions aren't available
+function hidePredictionWarning() {
+    $("#prediction-warning").css("pointer-events", "none");
+    $("#prediction-warning").css("opacity", "0");
+}

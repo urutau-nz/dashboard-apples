@@ -26,9 +26,10 @@
                                 <div id="switch-growth-div" class="active" onclick="setPage('growth')">
                                     Growth
                                 </div>
-                                <div id="switch-prediction-div" onclick="setPage('prediction')">
+                                <div id="switch-prediction-div" onclick="showPredictionWarning()"> <!-- onclick="setPage('prediction')" -->
                                     JoNZ
                                 </div>
+                                <div id="prediction-warning"><div class="x" onclick="hidePredictionWarning()">x</div>Currently Under Production<br><span style="font-size: 0.8em">This will provide size forecasts in the future.</span></div>
                             </td>
                         </tr>
                         <tr>
