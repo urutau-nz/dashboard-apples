@@ -368,6 +368,8 @@ prediction_graph.onmousemove = function (e) {
 
 
 // Form Changers
+var currently_comparing = "none";
+
 function regionFormType(type) {
     genGrowthGraph();
     if (type == "mono") {
@@ -377,14 +379,24 @@ function regionFormType(type) {
         $("#region-tr .description").text("");
         $("#region-tr .compare-button").removeClass("active");
 
+        currently_comparing = "none";
+
     } else if (type == "multi") {
-        orchardFormType("mono");
-        yearFormType("mono");
-        for (var elem of $("#region-tr input").get()) {
-            elem.type = "checkbox"
+
+        if ( currently_comparing != "region") {
+            orchardFormType("mono");
+            yearFormType("mono");
+            for (var elem of $("#region-tr input").get()) {
+                elem.type = "checkbox"
+            }
+            $("#region-tr .description").text("Currently Comparing - Select Multiple!");
+            $("#region-tr .compare-button").addClass("active");
+
+            currently_comparing = "region";
+
+        } else {
+            regionFormType("mono");
         }
-        $("#region-tr .description").text("Currently Comparing - Select Multiple!");
-        $("#region-tr .compare-button").addClass("active");
     }
 }
 function yearFormType(type) {
@@ -396,14 +408,24 @@ function yearFormType(type) {
         $("#year-tr .description").text("");
         $("#year-tr .compare-button").removeClass("active");
 
+        currently_comparing = "none";
+
     } else if (type == "multi") {
-        orchardFormType("mono");
-        regionFormType("mono");
-        for (var elem of $("#year-tr input").get()) {
-            elem.type = "checkbox"
+
+        if ( currently_comparing != "year") {
+            orchardFormType("mono");
+            regionFormType("mono");
+            for (var elem of $("#year-tr input").get()) {
+                elem.type = "checkbox"
+            }
+            $("#year-tr .description").text("Currently Comparing - Select Multiple!");
+            $("#year-tr .compare-button").addClass("active");
+
+            currently_comparing = "year";
+
+        } else {
+            yearFormType("mono");
         }
-        $("#year-tr .description").text("Currently Comparing - Select Multiple!");
-        $("#year-tr .compare-button").addClass("active");
 
     }
 }
@@ -414,12 +436,22 @@ function orchardFormType(type) {
         $("#orchard-tr .description").text("");
         $("#orchard-tr .compare-button").removeClass("active");
 
+        currently_comparing = "none";
+
     } else if (type == "multi" && orchardMenu instanceof vlDropDown) {
-        yearFormType("mono");
-        regionFormType("mono");
-        orchardMenu = orchardMenu.convertToMultiDropDown();
-        $("#orchard-tr .description").text("Currently Comparing - Select Multiple!");
-        $("#orchard-tr .compare-button").addClass("active");
+
+        if ( currently_comparing != "orchard") {
+            yearFormType("mono");
+            regionFormType("mono");
+            orchardMenu = orchardMenu.convertToMultiDropDown();
+            $("#orchard-tr .description").text("Currently Comparing - Select Multiple!");
+            $("#orchard-tr .compare-button").addClass("active");
+
+            currently_comparing = "orchard";
+
+        } else {
+            orchardFormType("mono");
+        }
     }
 }
 

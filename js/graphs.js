@@ -123,6 +123,19 @@ function genGrowthGraph() {
         datasets.push(graph_data);
     }
 
+    for(var dataset of datasets) {
+        dataset.sort(function(x, y) {
+            if (x.x < y.x) {
+              return -1;
+            }
+            if (x.x > y.x) {
+              return 1;
+            }
+            return 0;
+          });
+    }
+
+
     
     // Init
 
@@ -176,13 +189,15 @@ function genGrowthGraph() {
 
 
 
+    console.log(filtered_growth_statistics);
     if (filtered_growth_statistics.length == 0) {
         // No data matches - quit here
         growth_graph_layout = null;
         growth_graph_data = null;
 
         $("#growth-graph-backdrop").css("display", "block");
-        return null;
+        console.log("quitting");
+        return 1;
     } else {
         $("#growth-graph-backdrop").css("display", "none");
     }
@@ -194,6 +209,24 @@ function genGrowthGraph() {
 
 
     var bounds = genBoundsForData(graph_data);
+
+    // Real Bounds - Fixed per variety
+    var variety_bounds = {
+        "gala": [-6, 12],
+        "p_queen": [-6, 16],
+        "braeburn": [-6, 15],
+        "p_lady": [-6, 15],
+        "fuji": [-6, 16],
+        "jazz": [-6, 14],
+        "dazzle": [-6, 14],
+        "dazzle_promalin": [-6, 14],
+        "posy": [-6, 14]
+    };
+    var vb = variety_bounds[varietyMenu.value];
+    bounds.max_x = vb[1];
+    bounds.min_x = vb[0];
+    bounds.min_y = 20;
+    bounds.max_y = 80;
 
     growth_graph_layout = {
         'width': width,
@@ -208,10 +241,11 @@ function genGrowthGraph() {
 
 
 
-    var tick_number = Math.round((bounds.max_x - bounds.min_x) * 0.5);
+
+    var tick_number = Math.round((vb[1] - vb[0]) * 0.5);
     // X axis
     var x = d3.scaleLinear()
-    .domain([bounds.min_x, bounds.max_x])
+    .domain(vb)
     .range([ 0, width ])
     svg.append("g")
     .style("font", "15px arial")
@@ -406,217 +440,6 @@ function genGrowthGraph() {
 
 
 
-// PREDICTION GRAPH UPDATERS
-var prediction_graph_compare = null;
-var prediction_graph_data = null;
-var prediction_graph_layout = null;
-function genPredictionGraph() {
-    // Filter prediction statistics
-    var years = [];
-    $('input[name="year"]:checked').each(function() {
-        years.push(+this.value);
-     });
-    var regions = [];
-    $('input[name="region"]:checked').each(function() {
-        regions.push(this.value);
-     });
-    var orchards = (orchardMenu instanceof vlMultiDropDown ? orchardMenu.values : [orchardMenu.value]);
-
-    var filtered_growth_statistics = growth_statistics.filter(d => orchards.includes(d.rpin) && 
-                                                                    d.variety == varietyMenu.value && 
-                                                                    years.includes(d.year) && 
-                                                                    regions.includes(d.region));
-
-                          
-    // Build Graph Data
-    var graph_data = [];
-
-    filtered_growth_statistics.forEach(d => {
-        graph_data.push({x: d.week, y: d.mean, lq: d.lq, uq: d.uq, year: d.year, orchard: d.rpin, region: d.region});
-    });
-
-    
-    // Init
-
-    var growth_graph = document.getElementById("prediction-graph");
-    var padding = 6;
-    var legend_width = (growth_graph_compare ? 100 : 0);
-    var legend_spacing = 30;
-    var margin = {top: 60, right: 80, bottom: 70, left: 80},
-        width = growth_graph.clientWidth - margin.left - margin.right - 5,
-        height = growth_graph.clientHeight - margin.top - margin.bottom - 5;
-
-    growth_graph.innerHTML = "";
-    
-    
-    var svg = d3.select("#prediction-graph")
-        .append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-            .attr("transform",
-                "translate(" + (margin.left + padding) + "," + margin.top + ")");
-
-    width -= legend_width;
-    
-    
-    // Title
-    var title = `${varietyMenu.label} Prediction`;
-
-
-    svg.append("text")
-    .attr("transform",
-        "translate(" + (width/2 + padding) + " ,-20)")
-    .style("font", "18px arial")
-    .style("text-anchor", "middle")
-    .text(title)
-    .attr('class','graph-title');
-
-
-
-
-    var bounds = genBoundsForData(graph_data);
-
-    prediction_graph_layout = {
-        'width': width,
-        'bounds': bounds,
-        'legend_width': legend_width,
-        'height': height,
-        'x': margin.left + padding * 2,
-        'y': margin.top,
-        'margin': margin
-    };
-    console.log(">> GenPredictionGraph", prediction_graph_layout, graph_data);
-
-
-
-    var tick_number = Math.round((bounds.max_x - bounds.min_x) * 0.5);
-    // X axis
-    var x = d3.scaleLinear()
-    .domain([bounds.min_x, bounds.max_x])
-    .range([ 0, width ])
-    svg.append("g")
-    .style("font", "15px arial")
-    .attr("transform", "translate(" + padding + "," + (height + padding) + ")")
-    .call(d3.axisBottom(x).ticks(tick_number).tickSize(0))
-    .select(".domain").remove();
-    
-    // X axis label
-
-    svg.append("text")
-    .attr("transform",
-        "translate(" + (width/2 + padding) + " ," +
-                        (height + margin.bottom/2 + 10 + padding) + ")")
-    .style("text-anchor", "middle")
-    .text("ISO Week")
-    .attr('class','graph-axis-label');
-
-
-
-
-    
-    // Add Y axis
-    var y = d3.scaleLinear()
-    .domain([bounds.min_y, bounds.max_y])
-    .range([ height, 0]);
-    svg.append("g")
-    .style("font", "15px arial")
-    .call(d3.axisLeft(y).ticks(6).tickSize(0))
-    .select(".domain").remove();
-
-    // Add Y axis label
-
-    svg.append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left/2 - 20)
-    .attr("x",0 - (height / 2))
-    .attr("dy", "1em")
-    .style("text-anchor", "middle")
-    .text("Diameter (mm)")
-    .attr('class','graph-axis-label');   
-
-
-
-
-    // GRIDLINES
-
-
-    
-    // add the X gridlines 
-    svg.append("g")			
-    .attr("class", "grid x-grid")
-    .attr("transform", "translate(" + padding + "," + height + ")")
-    .call(make_x_gridlines(x, 12)
-        .tickSize(-height)
-        .tickFormat("")
-    )
-    .select(".domain").remove();
-
-
-    // add the Y gridlines
-    svg.append("g")			
-    .attr("class", "grid y-grid")
-    .attr("transform", "translate(" + padding + ", 0 )")
-    .call(make_y_gridlines(y, 12)
-        .tickSize(-width)
-        .tickFormat("")
-    )
-    .select(".domain").remove();
-
-
-    // add highlihgt line
-    svg.append('line')
-    .attr("id", "prediction-graph-highlight")
-    .style("stroke", "#c4deeb")
-    .style("stroke-width", 3)
-    .attr("x1", padding)
-    .attr("y1", 0)
-    .attr("x2", padding)
-    .attr("y2", height); 
-
-    
-
-
-
-
-        // Create the Line
-    svg.append("path")
-    .datum(graph_data)
-    .attr("transform", "translate(" + padding + ", 0 )")
-    .attr("fill", "none")
-    .attr("stroke", "#50add4")
-    .attr("stroke-width", 2)
-    .attr("d", d3.line()
-        .x(function(d) { return x(d.x) })
-        .y(function(d) { return y(d.y) })
-        );
-    
-    // Add the Circles
-    svg.selectAll("myCircles")
-    .data(graph_data)
-    .enter()
-    .append("circle")
-        .attr("class", function(d) { return "circle-" + d.x })
-        .attr("transform", "translate(" + padding + ", 0 )")
-        .attr("fill", "#50add4")
-        .attr("stroke", "none")
-        .attr("cx", function(d) { return x(d.x) })
-        .attr("cy", function(d) { return y(d.y) })
-        .attr("r", 3);
-
-        
-    for (var data_index in graph_data) {
-        graph_data[data_index].color = "#50add4";
-    }
-    
-
-    // Make Graph data available globally
-    prediction_graph_data = graph_data;
-
-}
-
-
-
 
 
 
@@ -637,51 +460,63 @@ function genPredictionGraph() {
 
 // PAST COUNTS ETC
 var all_counts = {
-    "gala": [[2015, 121],
-            [2016, 123],
+    "gala": [[2016, 123],
             [2017, 123],
             [2018, 120],
             [2019, 131],
             [2020, 131],
+            [2021, 121]
             ],
-    "p_queen": [[2015, 98.7],
-            [2016, 102],
+    "p_queen": [[2016, 102],
             [2017, 99.6],
             [2018, 97.8],
             [2019, 109],
             [2020, 101],
+            [2021, 98]
             ],
     "braeburn": [[2016, 111],
             [2017, 111],
             [2018, 106],
             [2019, 115],
             [2020, 111],
+            [2021, 112]
             ],
     "p_lady": [[2020, 113],
+                [2021, 108]
             ],
     "fuji": [[2016, 98],
             [2017, 99],
             [2018, 92],
             [2019, 106],
             [2020, 99],
+            [2021, 93]
             ],
     "jazz": [[2016, 117],
             [2017, 118],
             [2018, 112],
             [2019, 125],
             [2020, 118],
-            ]
+            [2021, 110]
+            ],
+    "dazzle": [],
+    "dazzle_promalin": [],
+    "posy": []
 };
 var target_counts = {
-    "gala": [2021, 121],
-    "p_queen": [2021, 98],
-    "braeburn": [2021, 112],
-    "p_lady": [2021, 108],
-    "fuji": [2021, 93],
-    "jazz": [2021, 110],
-}
+    "gala": [2022, 0],
+    "p_queen": [2022, 0],
+    "braeburn": [2022, 0],
+    "p_lady": [2022, 0],
+    "fuji": [2022, 0],
+    "jazz": [2022, 0],
+    "dazzle": [2022, 0],
+    "dazzle_promalin":[2022, 0],
+    "posy": [2022, 0]
+};
 function updateCounts() {
     var contents = "";
+
+    $(".variety-label").text(varietyMenu.label);
 
     for (var count of all_counts[varietyMenu.value]) {
         contents += `
@@ -702,4 +537,7 @@ function updateCounts() {
     }
 
     $("#horizontal-counts-table .counts-tr").html(contents);
+
+    $(".target-value-td").html(`<h1>${target_counts[varietyMenu.value][1]}</h1>`);
+    $(".target-year-td").html(`<h2>${target_counts[varietyMenu.value][0]}</h2>`)
 }

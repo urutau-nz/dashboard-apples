@@ -23,13 +23,6 @@
                     <table id="menu-table">
                         <tr>
                             <td id="switch-td"> <!-- Switch -->
-                                <div id="switch-growth-div" class="active" onclick="setPage('growth')">
-                                    Growth
-                                </div>
-                                <div id="switch-prediction-div" onclick="showPredictionWarning()"> <!-- onclick="setPage('prediction')" -->
-                                    JoNZ
-                                </div>
-                                <div id="prediction-warning"><div class="x" onclick="hidePredictionWarning()">x</div>Currently Under Production<br><span style="font-size: 0.8em">This will provide size forecasts in the future.</span></div>
                             </td>
                         </tr>
                         <tr>
@@ -165,13 +158,13 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="year">
-                                                        <input type="checkbox" id="year-2021" value="21" name="year" checked>
+                                                        <input type="checkbox" id="year-2021" value="21" name="year">
                                                         <label for="year-2021">2021</label>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="year">
-                                                        <input type="checkbox" id="year-2022" value="22" name="year">
+                                                        <input type="checkbox" id="year-2022" value="22" name="year" checked>
                                                         <label for="year-2022">2022</label>
                                                     </td>
                                                 </tr>
@@ -222,24 +215,10 @@
                                 <table id="horizontal-counts-table" style="width: 100%;">
                                     <tr>
                                         <td colspan="100%" style="padding-bottom: 0.5rem;">
-                                            <h2>Past Counts for Royal Gala</h2>
+                                            <h2>Past Counts for <span class="variety-label">Royal Gala</span></h2>
                                         </td>
                                     </tr>
                                     <tr class="counts-tr">
-                                        <td>
-                                            <table style="width: 100%;">
-                                                <tr>
-                                                    <td>
-                                                        <h1>121</h1>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <h2>2015</h2>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
                                         <td>
                                             <table style="width: 100%;">
                                                 <tr>
@@ -310,6 +289,20 @@
                                                 </tr>
                                             </table>
                                         </td>
+                                        <td>
+                                            <table style="width: 100%;">
+                                                <tr>
+                                                    <td>
+                                                        <h1>121</h1>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h2>2021</h2>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
                                     </tr>
                                 </table>
                             </td>
@@ -324,13 +317,13 @@
                                         <td>
                                             <table style="width: 100%;">
                                                 <tr>
-                                                    <td>
-                                                        <h1>121</h1>
+                                                    <td class="target-value-td">
+                                                        <h1>??</h1>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>
-                                                        <h2>2021</h2>
+                                                    <td class="target-year-td">
+                                                        <h2>2022</h2>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -373,7 +366,7 @@
                                 <table id="vertical-counts-table" style="width: 100%;min-width:8rem;">
                                     <tr>
                                         <td>
-                                            <h2>Past Counts for Royal Gala</h2>
+                                            <h2>Past Counts for <span class="variety-label">Royal Gala</span></h2>
                                         </td>
                                     </tr>
                                     <tr>

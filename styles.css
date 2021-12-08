@@ -286,9 +286,10 @@ svg .rect {
 
 #switch-td {
     width: 100%;
-    height: 48px;
+    height: 1rem;
     position: relative;
-}
+    background-color: #50add4;
+}/*
 #switch-td div {
     width: 50%;
     height: 0;
@@ -309,10 +310,10 @@ svg .rect {
 #switch-growth-div {
     left: 0;
 }
-div#switch-prediction-div { /* Remove these when predictions are online */
+div#switch-prediction-div { /* Remove these when predictions are online 
     cursor: default;
     right: 0;
-}
+}*/
 
 
 

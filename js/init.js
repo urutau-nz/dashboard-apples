@@ -11,7 +11,6 @@ orchardMenu.onchange = function() {
 var varietyMenu = new vlDropDown("variety-dropdown");
 varietyMenu.onchange = function() {
     genGrowthGraph();
-    genPredictionGraph();
     updateCounts();
     updateOrchardDropdown();
 }
@@ -48,7 +47,10 @@ function init() {
         'braeburn': 'Braeburn',
         'p_lady': 'Pink Lady',
         'fuji': 'Fuji',
-        'jazz': 'Jazz'
+        'jazz': 'Jazz',
+        "dazzle": 'Dazzle',
+        "dazzle_promalin": 'Dazzle Promalin',
+        "posy": "Posy"
     };
     for (var value of variety_values) {
         varietyMenu.push(value, variety_headers[value]);
