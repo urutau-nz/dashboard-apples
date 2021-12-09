@@ -503,15 +503,15 @@ var all_counts = {
     "posy": []
 };
 var target_counts = {
-    "gala": [2022, 0],
-    "p_queen": [2022, 0],
-    "braeburn": [2022, 0],
-    "p_lady": [2022, 0],
-    "fuji": [2022, 0],
-    "jazz": [2022, 0],
-    "dazzle": [2022, 0],
-    "dazzle_promalin":[2022, 0],
-    "posy": [2022, 0]
+    "gala": [2022, 115],
+    "p_queen": [2022, 98],
+    "braeburn": [2022, 'N/A'],
+    "p_lady": [2022, 108],
+    "fuji": [2022, 93],
+    "jazz": [2022, 110],
+    "dazzle": [2022, 98],
+    "dazzle_promalin":[2022, '??'],
+    "posy": [2022, 112]
 };
 function updateCounts() {
     var contents = "";
