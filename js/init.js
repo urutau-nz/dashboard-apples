@@ -24,7 +24,7 @@ $('input[name="region"]').change(function () {
 
 function init() {
     
-
+    console.log("INIT");
     // Get Unique Form Values
     var orchard_values = [];
     var variety_values = [];

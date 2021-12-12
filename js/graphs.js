@@ -498,15 +498,9 @@ var all_counts = {
             [2020, 118],
             [2021, 123]
             ],
-<<<<<<< HEAD
     "dazzle": ['N/A', 'N/A'],
     "dazzle_promalin": ['N/A', 'N/A'],
     "posy": ['N/A', 'N/A']
-=======
-    "dazzle": [],
-    "dazzle_promalin": [],
-    "posy": [[2021, 123]]
->>>>>>> 500a4df47949c6a971ddd573d4ef9d9b721c732b
 };
 var target_counts = {
     "gala": [2022, 115],
