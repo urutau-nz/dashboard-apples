@@ -498,9 +498,9 @@ var all_counts = {
             [2020, 118],
             [2021, 110]
             ],
-    "dazzle": [],
-    "dazzle_promalin": [],
-    "posy": []
+    "dazzle": ['N/A', 'N/A'],
+    "dazzle_promalin": ['N/A', 'N/A'],
+    "posy": ['N/A', 'N/A']
 };
 var target_counts = {
     "gala": [2022, 115],
@@ -510,7 +510,7 @@ var target_counts = {
     "fuji": [2022, 93],
     "jazz": [2022, 110],
     "dazzle": [2022, 98],
-    "dazzle_promalin":[2022, '??'],
+    "dazzle_promalin":[2022, 'N/A'],
     "posy": [2022, 112]
 };
 function updateCounts() {
