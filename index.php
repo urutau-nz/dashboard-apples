@@ -1,3 +1,14 @@
+<?php 
+    switch (dirname(__FILE__, 2)) {
+        case "/home/web-dev": {
+            $GLOBALS["domain"] = "test";
+        }; break;
+        case "/home/website": {
+            $GLOBALS["domain"] = "projects";
+        }; break;
+    }
+?>
+
 <!DOCTYPE html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -12,12 +23,10 @@
     <title>Apple Growth - Urban Intelligence</title> 
 
     <link rel="stylesheet" href="styles.css"/>
-    <link rel="stylesheet" href="https://test.urbanintelligence.co.nz/uivl/form-items.css"/>
+    <?php
+        require_once("../ui-visual-library/css-links-" . $GLOBALS["domain"] . ".php");
+    ?>
 
-    <!-- GOOGLE FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,800;1,300;1,400;1,500;1,600;1,800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -538,9 +547,11 @@
       </div>
 </body>
 </html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://test.urbanintelligence.co.nz/uivl/data-loading-tools.js"></script>
-<script src="https://test.urbanintelligence.co.nz/uivl/form-items.js"></script>
+<?php
+    require_once("../ui-visual-library/js-scripts-" . $GLOBALS["domain"] . ".php");
+?>
+
+
 
 <script>
     var DEBUGGING = true;
