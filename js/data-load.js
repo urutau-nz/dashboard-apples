@@ -3,7 +3,7 @@ var import_manager = new ImportManager();
 
 
 import_manager.addImport('growth_statistics', 'Growth Statistics', 'csv', 
-    'https://projects.urbanintelligence.co.nz/mrapple/data/growth_statistics.csv',
+    'https://test.urbanintelligence.co.nz/mrapple/data/growth_statistics.csv',
     d3.autoType);
 
     

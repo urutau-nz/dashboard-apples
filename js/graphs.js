@@ -180,7 +180,7 @@ function genGrowthGraph() {
     svg.append("text")
     .attr("transform",
         "translate(" + (width/2 + padding) + " ,-20)")
-    .style("font", "18px arial")
+    .style("font", "18px 'Rubik'")
     .style("text-anchor", "middle")
     .text(title)
     .attr('class','graph-title');
