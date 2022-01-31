@@ -79,16 +79,34 @@ function genGrowthGraph() {
         years.push(+this.value);
      });
     var regions = [];
+    var region_synonyms = {};
     $('input[name="region"]:checked').each(function() {
         regions.push(this.value);
+
+        // Allow HB as Hastings
+        if (this.value == "Hastings") {
+            region_synonyms["HB"] = "Hastings";
+        }
      });
+    console.log(regions);
     var orchards = (orchardMenu instanceof vlMultiDropDown ? orchardMenu.values : [orchardMenu.value]);
 
     var filtered_growth_statistics = growth_statistics.filter(d => orchards.includes(d.rpin) && 
                                                                     d.variety == varietyMenu.value && 
                                                                     years.includes(d.year) && 
-                                                                    regions.includes(d.region));
+                                                                    ( regions.includes(d.region) ||
+                                                                      Object.keys(region_synonyms).includes(d.region)
+                                                                    ));
 
+    // Replace region synonyms with true values
+    for (var synonym in region_synonyms) {
+        for (var stat_id in filtered_growth_statistics) {
+            var stat = filtered_growth_statistics[stat_id];
+            if (stat.region == synonym) {
+                filtered_growth_statistics[stat_id].region = region_synonyms[synonym];
+            }
+        }
+    }
                           
     // Build Graph Data
     var graph_data = [];
