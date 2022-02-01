@@ -91,7 +91,7 @@ function genGrowthGraph() {
     console.log(regions);
     var orchards = (orchardMenu instanceof vlMultiDropDown ? orchardMenu.values : [orchardMenu.value]);
 
-    var filtered_growth_statistics = growth_statistics.filter(d => orchards.includes(d.rpin) && 
+    var filtered_growth_statistics = growth_statistics.filter(d => orchards.includes(d.rpin_block) && 
                                                                     d.variety == varietyMenu.value && 
                                                                     years.includes(d.year) && 
                                                                     ( regions.includes(d.region) ||
@@ -111,8 +111,9 @@ function genGrowthGraph() {
     // Build Graph Data
     var graph_data = [];
 
+    // week
     filtered_growth_statistics.forEach(d => {
-        graph_data.push({x: d.week, y: d.mean, lq: d.lq, uq: d.uq, year: d.year, orchard: d.rpin, region: d.region});
+        graph_data.push({x: d.day, y: d.mean, lq: d.lq, uq: d.uq, year: d.year, orchard: d.rpin_block, region: d.region});
     });
 
     // separate datasets
@@ -229,18 +230,17 @@ function genGrowthGraph() {
     var bounds = genBoundsForData(graph_data);
 
     // Real Bounds - Fixed per variety
-    var variety_bounds = {
-        "gala": [-6, 12],
-        "p_queen": [-6, 16],
-        "braeburn": [-6, 15],
-        "p_lady": [-6, 15],
-        "fuji": [-6, 16],
-        "jazz": [-6, 14],
-        "dazzle": [-6, 14],
-        "dazzle_promalin": [-6, 14],
-        "posy": [-6, 14]
-    };
-    var vb = variety_bounds[varietyMenu.value];
+    var vb = [null, null];
+    growth_statistics.filter(d => d.variety == varietyMenu.value).forEach( function (d) {
+        if (vb[0] == null) {
+            vb[0] = d.day;
+            vb[1] = d.day;
+        } else if (vb[0] > d.day) {
+            vb[0] = d.day;
+        } else if (vb[1] < d.day) {
+            vb[1] = d.day;
+        }
+    });
     bounds.max_x = vb[1];
     bounds.min_x = vb[0];
     bounds.min_y = 20;
@@ -260,7 +260,6 @@ function genGrowthGraph() {
 
 
 
-    var tick_number = Math.round((vb[1] - vb[0]) * 0.5);
     // X axis
     var x = d3.scaleLinear()
     .domain(vb)
@@ -268,7 +267,7 @@ function genGrowthGraph() {
     svg.append("g")
     .style("font", "15px arial")
     .attr("transform", "translate(" + padding + "," + (height + padding) + ")")
-    .call(d3.axisBottom(x).ticks(tick_number).tickSize(0))
+    .call(d3.axisBottom(x).ticks(12).tickSize(0))
     .select(".domain").remove();
     
     // X axis label
@@ -278,7 +277,7 @@ function genGrowthGraph() {
         "translate(" + (width/2 + padding) + " ," +
                         (height + margin.bottom/2 + 10 + padding) + ")")
     .style("text-anchor", "middle")
-    .text("ISO Week")
+    .text("ISO Day") // week
     .attr('class','graph-axis-label');
 
 
@@ -518,7 +517,9 @@ var all_counts = {
             ],
     "dazzle": [['N/A', 'N/A']],
     "dazzle_promalin": [['N/A', 'N/A']],
-    "posy": [['N/A', 'N/A']]
+    "posy": [[2020, 114],
+            [2021, 124]
+            ]
 };
 var target_counts = {
     "gala": [2022, 115],

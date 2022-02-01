@@ -32,8 +32,8 @@ function init() {
         if (!variety_values.includes(item.variety)) {
             variety_values.push(item.variety);
         }
-        if (!orchard_values.includes(item.rpin) && item.variety == default_values.variety) {
-            orchard_values.push(item.rpin);
+        if (!orchard_values.includes(item.rpin_block) && item.variety == default_values.variety) {
+            orchard_values.push(item.rpin_block);
         }
     }
 
@@ -68,8 +68,8 @@ function init() {
 function updateOrchardDropdown() {
     var orchard_values = [];
     for (var item of growth_statistics) {
-        if (!orchard_values.includes(item.rpin) && item.variety == varietyMenu.value) {
-            orchard_values.push(item.rpin);
+        if (!orchard_values.includes(item.rpin_block) && item.variety == varietyMenu.value) {
+            orchard_values.push(item.rpin_block);
         }
     }
     orchardMenu.populate(orchard_values);

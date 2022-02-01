@@ -14,7 +14,7 @@ import_manager.runImports();
 var growth_statistics = [];
 
 function importsComplete(imports) {
-    growth_statistics = imports['growth_statistics'].filter(d => d.year != "2015" && !d.rpin.startsWith("OLD BLOCK") && d.variety != 'braeburn');
+    growth_statistics = imports['growth_statistics'].filter(d => d.year != "2015" && !d.rpin_block.startsWith("OLD BLOCK") && d.variety != 'braeburn');
     
     init();
 }

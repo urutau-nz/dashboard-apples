@@ -196,9 +196,9 @@ growth_graph.onmousemove = function (e) {
                                     <div class="graph-hover-dot" style="background-color:${point.color}"></div>
                                 </td>
                                 <td style="color:${darkenColor(point.color)}CC">
-                                    ${details} ${Math.round(point.y)}mm in week ${point.x}
+                                    ${details} ${Math.round(point.y)}mm in day ${point.x}
                                 </td>
-                            </tr>`;
+                            </tr>`; // week
             }
             document.getElementById("growth-hover-table").innerHTML = contents;
 
@@ -342,7 +342,7 @@ prediction_graph.onmousemove = function (e) {
                                     <div class="graph-hover-dot" style="background-color:${point.color}"></div>
                                 </td>
                                 <td style="color:${darkenColor(point.color)}CC">
-                                    ${Math.round(point.y)}mm in week ${point.x}
+                                    ${Math.round(point.y)}mm in day ${point.x}
                                 </td>
                             </tr>`;
             }
