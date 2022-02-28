@@ -24,7 +24,7 @@
 
     <link rel="stylesheet" href="styles.css"/>
     <?php
-        require_once("../ui-visual-library/css-links-" . $GLOBALS["domain"] . ".php");
+        require_once("../ui-visual-library/css-links.php");
     ?>
 
 </head>
@@ -548,7 +548,7 @@
 </body>
 </html>
 <?php
-    require_once("../ui-visual-library/js-scripts-" . $GLOBALS["domain"] . ".php");
+    require_once("../ui-visual-library/js-scripts.php");
 ?>
 
 

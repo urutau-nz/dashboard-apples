@@ -88,7 +88,7 @@ function genGrowthGraph() {
             region_synonyms["HB"] = "Hastings";
         }
      });
-    console.log(regions);
+     
     var orchards = (orchardMenu instanceof vlMultiDropDown ? orchardMenu.values : [orchardMenu.value]);
 
     var filtered_growth_statistics = growth_statistics.filter(d => orchards.includes(d.rpin_block) && 
@@ -97,7 +97,7 @@ function genGrowthGraph() {
                                                                     ( regions.includes(d.region) ||
                                                                       Object.keys(region_synonyms).includes(d.region)
                                                                     ));
-
+    
     // Replace region synonyms with true values
     for (var synonym in region_synonyms) {
         for (var stat_id in filtered_growth_statistics) {
