@@ -12,13 +12,12 @@
 <!DOCTYPE html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <link rel="icon" href="https://urbanintelligence.co.nz/wp-content/uploads/2021/11/Urban-Intelligence-Solo-Mark-Light-Blue-Circle-32px.png" sizes="32x32">
-    <link rel="icon" href="https://urbanintelligence.co.nz/wp-content/uploads/2021/11/Urban-Intelligence-Solo-Mark-Light-Blue-Circle-192px.png" sizes="192x192">
+    <link rel="icon" href="https://projects.urbanintelligence.co.nz/uivl/lib/Urban-Intelligence-Solo-Mark-Light-Blue-Circle-32px.png" sizes="32x32">
+    <link rel="icon" href="https://projects.urbanintelligence.co.nz/uivl/lib/Urban-Intelligence-Solo-Mark-Light-Blue-Circle-192px.png" sizes="192x192">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.0.1/d3.min.js" integrity="sha512-1e0JvdNhUkvFbAURPPlFKcX0mWu/b6GT9e0uve7BW4MFxJ15q4ZCd/Llz+B7/oh+qhw7/l6Q1ObPt6aAuR01+Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css" />
 
-    <script src="https://d3js.org/d3.v4.js"></script>
 
     <title>Apple Growth - Urban Intelligence</title> 
 
@@ -516,7 +515,7 @@
         <tr> <!-- Footer -->
           <td colspan="2" id="footer">
             <div style="height:2rem;width:100%;overflow:none;">
-              <a href="https://urbanintelligence.co.nz/" target="_blank"><img src="https://urbanintelligence.co.nz/wp-content/uploads/2021/11/Solo-Mark-Small-White-32px.png"></img></a>
+              <a href="https://urbanintelligence.co.nz/" target="_blank"><img src="https://projects.urbanintelligence.co.nz/uivl/lib/Solo-Mark-Small-White-32px.png"></img></a>
               <div class="attribution">© 2021 Urban Intelligence.</div>
             </div>
           </td>
