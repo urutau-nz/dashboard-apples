@@ -11,6 +11,15 @@
 
 <!DOCTYPE html>
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147044719-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-147044719-1');
+    </script>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <link rel="icon" href="https://projects.urbanintelligence.co.nz/uivl/lib/Urban-Intelligence-Solo-Mark-Light-Blue-Circle-32px.png" sizes="32x32">
     <link rel="icon" href="https://projects.urbanintelligence.co.nz/uivl/lib/Urban-Intelligence-Solo-Mark-Light-Blue-Circle-192px.png" sizes="192x192">
