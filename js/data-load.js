@@ -1,9 +1,9 @@
 
 var import_manager = new ImportManager();
-
+var vl_domain = window.location.hostname;
 
 import_manager.addImport('growth_statistics', 'Growth Statistics', 'csv', 
-    `https://${vl_domain}.urbanintelligence.co.nz/mrapple/data/growth_statistics.csv`,
+    `https://${vl_domain}/mrapple/data/growth_statistics.csv`,
     d3.autoType);
 
     
